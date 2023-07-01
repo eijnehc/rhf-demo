@@ -150,7 +150,14 @@ export const YoutubeForm = () => {
 
         <div className="form-control">
           <label htmlFor="twitter">Twitter</label>
-          <input type="text" id="channel" {...register("social.twitter")} />
+          <input
+            type="text"
+            id="channel"
+            {...register("social.twitter", {
+              disabled: watch("channel") === "",
+              required: "enter twitter profile",
+            })}
+          />
         </div>
 
         <div className="form-control">
