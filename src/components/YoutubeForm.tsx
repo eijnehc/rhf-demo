@@ -36,7 +36,15 @@ export const YoutubeForm = () => {
       dob: new Date(),
     },
   });
-  const { register, control, handleSubmit, formState, watch } = form;
+  const {
+    register,
+    control,
+    handleSubmit,
+    formState,
+    watch,
+    getValues,
+    setValue,
+  } = form;
   const { errors } = formState;
 
   const { fields, append, remove } = useFieldArray({
@@ -46,6 +54,19 @@ export const YoutubeForm = () => {
 
   const onSubmit = (data: FormValues) => {
     console.log(data);
+  };
+
+  const handleGetValue = () => {
+    console.log("Get values", getValues("social"));
+  };
+  const handleSetValue = () => {
+    console.log(
+      setValue("username", "", {
+        shouldDirty: true,
+        shouldTouch: true,
+        shouldValidate: true,
+      })
+    );
   };
 
   const watchUsername = watch("username");
@@ -201,6 +222,12 @@ export const YoutubeForm = () => {
           <p className="error">{errors.dob?.message}</p>
         </div>
 
+        <button type="button" onClick={handleGetValue}>
+          Get Values
+        </button>
+        <button type="button" onClick={handleSetValue}>
+          Set Values
+        </button>
         <button>Submit</button>
       </form>
       <DevTool control={control} />
