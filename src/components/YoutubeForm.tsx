@@ -45,7 +45,7 @@ export const YoutubeForm = () => {
     getValues,
     setValue,
   } = form;
-  const { errors, touchedFields, dirtyFields, isDirty } = formState;
+  const { errors, touchedFields, dirtyFields, isDirty, isValid } = formState;
 
   console.log(touchedFields, dirtyFields, isDirty);
 
@@ -241,7 +241,7 @@ export const YoutubeForm = () => {
         <button type="button" onClick={handleSetValue}>
           Set Values
         </button>
-        <button>Submit</button>
+        <button disabled={!isDirty || !isValid}>Submit</button>
       </form>
       <DevTool control={control} />
     </div>
