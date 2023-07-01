@@ -35,6 +35,7 @@ export const YoutubeForm = () => {
       age: 0,
       dob: new Date(),
     },
+    mode: "all",
   });
   const {
     register,
@@ -266,7 +267,7 @@ export const YoutubeForm = () => {
         <button type="button" onClick={handleSetValue}>
           Set Values
         </button>
-        <button disabled={!isDirty || isSubmitting}>Submit</button>
+        <button disabled={!isDirty || !isValid || isSubmitting}>Submit</button>
         <button onClick={() => reset()}>Reset</button>
       </form>
       <DevTool control={control} />
