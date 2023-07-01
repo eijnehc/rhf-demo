@@ -149,6 +149,13 @@ export const YoutubeForm = () => {
                     "This domain is not supported"
                   );
                 },
+                emailAvailable: async (fieldValue) => {
+                  const response = await fetch(
+                    `https://jsonplaceholder.typicode.com/users?email=${fieldValue}`
+                  );
+                  const data = await response.json();
+                  return data.length === 0 || "Email already exist";
+                },
               },
             })}
           />
@@ -259,7 +266,7 @@ export const YoutubeForm = () => {
         <button type="button" onClick={handleSetValue}>
           Set Values
         </button>
-        <button disabled={!isDirty || !isValid || isSubmitting}>Submit</button>
+        <button disabled={!isDirty || isSubmitting}>Submit</button>
         <button onClick={() => reset()}>Reset</button>
       </form>
       <DevTool control={control} />
