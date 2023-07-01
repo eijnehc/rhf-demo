@@ -35,7 +35,7 @@ export const YoutubeForm = () => {
       age: 0,
       dob: new Date(),
     },
-    mode: "all",
+    mode: "onSubmit",
   });
   const {
     register,
@@ -46,6 +46,7 @@ export const YoutubeForm = () => {
     getValues,
     setValue,
     reset,
+    trigger,
   } = form;
   const {
     errors,
@@ -266,6 +267,9 @@ export const YoutubeForm = () => {
         </button>
         <button type="button" onClick={handleSetValue}>
           Set Values
+        </button>
+        <button type="button" onClick={() => trigger("channel")}>
+          Trigger
         </button>
         <button disabled={!isDirty || !isValid || isSubmitting}>Submit</button>
         <button onClick={() => reset()}>Reset</button>
